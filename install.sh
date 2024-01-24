@@ -11,6 +11,8 @@ proxy_off='unset http_proxy; unset https_proxy; unset HTTP_PROXY; unset HTTPS_PR
 
 eval $proxy_on
 
+# ==== Install APPs
+echo "======= Brew installing ======="
 # Homebrew/Linuxbrew
 # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 export HOMEBREW_INSTALL_FROM_API=1
@@ -22,15 +24,19 @@ git clone --depth=1 https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/install.gi
 /bin/bash brew-install/install.sh
 rm -rf brew-install
 
-brew install the_silver_searcher fasd fzf nvim vim nodejs
+brew install the_silver_searcher fasd fzf nvim vim nodejs chezmoi tmux
+
+# ===== apply dotfiles
+chezmoi init https://github.com/JonesZeng/dotfiles.git
+chezmoi apply
 
 chsh -s $(which zsh)
 
-# === sed config home
+# sed config home
 # sed -in-place -e "s#HOME=/Users/zenghaolun02#HOME=${HOME}#g" ${HOME}/.zshrc
 [ -f ~/.config/nvim/_machine_specific.vim ] && sed -in-place -e "s#/Users/zenghaolun02/opt#${ENV_HOME}#g" ${HOME}/.config/nvim/_machine_specific.vim
 
-# miniconda3
+# === miniconda3
 echo "====== Install conda ======"
 cd ${ENV_HOME}
 if [[ `uname` == 'Linux' ]]; then
