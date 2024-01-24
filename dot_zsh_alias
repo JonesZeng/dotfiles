@@ -1,0 +1,83 @@
+######################################
+# alias
+######################################
+# Sys path
+alias fzf-clip='fzf | xclip -selection clipboard'
+alias google-auth='python ~/.scripts/google-auth.py'
+alias copy-google-auth='google-auth | pbcopy'
+
+# Ranger
+alias ra='ranger'
+
+# check opt info
+alias tf-version='python -c "import tensorflow as tf; print(tf.__version__)"'
+alias trt-version='python -c "import tensorrt as trt; print(trt.__version__)"'
+alias cuda-version='cat /usr/local/cuda/version.txt'
+alias cudnn-version='cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2'
+alias nvidia-driver-version='cat /proc/driver/nvidia/version'
+
+# git
+alias cdd='cd $(find * -type d | fzf)'
+alias git-checkout='git checkout $(git branch -r | fzf)'
+
+# Screen Share
+alias vnc-x11='nohup x11vnc -display :0 -auth ~/.Xauthority &'
+
+# ===
+# === Network
+# ===
+
+# chromedriver
+export CHROMEDRIVER_CDNURL=http://npm.taobao.org/mirrors/chromedriver/
+# electron
+export ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
+
+# alias
+alias proxy_off='unset http_proxy; unset https_proxy; unset HTTP_PROXY; unset HTTPS_PROXY'
+alias get-ip='curl ipinfo.io'
+alias set-proxy='export ALL_PROXY=socks5://127.0.0.1:1080'
+alias unset-proxy='unset all_proxy && unset ALL_PROXY && unset HTTP_PROXY && unset HTTPS_PROXY'
+alias set-allproxy-http='export ALL_PROXY=http://127.0.0.1:12333'
+alias set-http='set HTTP_PROXY=http://127.0.0.1:12333'
+alias set-https='set HTTPS_PROXY=http://127.0.0.1:12333'
+alias set-proxy-exception='set NO_PROXY="*.tsinghua.edu.cn,*.ustc.edu.cn, *.xjtu*, *.baidu.com"'
+
+alias git-setproxy='git config --global http.https://github.com.proxy socks5://127.0.0.1:7890'
+# alias git-setproxy='git config --global http.https://github.com.proxy http://192.168.1.72:58591'
+alias git-setproxy-baidu='git config --global http.https://github.com.proxy http://127.0.0.1:7890'
+alias git-unsetproxy='git config --global --unset http.https://github.com.proxy'
+alias git-set-http="git config --global http.proxy 'socks5://127.0.0.1:7890'"
+alias git-set-https="git config --global https.proxy 'socks5://127.0.0.1:7890'"
+alias git-unset-http="git config --global --unset http.proxy"
+alias git-unset-https="git config --global --unset https.proxy"
+
+alias pip-set-index='pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple'
+
+alias snap-set-http='sudo snap set system proxy.http=http://127.0.0.1:12333'
+alias snap-set-https='sudo snap set system proxy.https=http://127.0.0.1:12333'
+
+alias wget-proxy="wget --proxy=on"
+alias pip-proxy="pip --proxy socks5://127.0.0.1:1080"
+alias set-snap-http="sudo snap set system proxy.http='http://127.0.0.1:12333'"
+alias set-snap-https="sudo snap set system proxy.https='http://127.0.0.1:12333'"
+
+alias get-ip="curl -i http://ip.cn"
+alias check-connection="curl -kv https://github.com/Fortran-FOSS-Programmers/FOODIE.git"
+
+alias ll='ls -l'
+alias la='ls -a'
+
+alias ci='code-insiders'
+
+# wewechat
+alias wechat='cd ${HOME}/Opt/wewechat && nohup npm run dev &'
+
+#alias curl='http --download'
+
+# source
+alias source-zsh='source ~/.zshrc'
+
+# clipboard
+alias xclip-board='xclip -selection clipboard'
+alias pwd-clip='pwd && pwd | xclip -selection clipboard'
+alias ssh-clip='cat ~/.ssh/id_rsa.pub | xclip -selection clipboard'
